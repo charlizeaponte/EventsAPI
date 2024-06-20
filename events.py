@@ -1,6 +1,6 @@
 import requests
 
-API_KEY = "EnyhC0nnujH5iAVj6SKOteGi0jzV6N7V"
+API_KEY = ""
 BASE_URL = "https://app.ticketmaster.com/discovery/v2/"
 
 user = input("enter a performer:")
