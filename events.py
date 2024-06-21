@@ -49,7 +49,8 @@ if response.status_code == 200:
 
     # Execute SQL query to fetch data
     with engine.connect() as connection:
-        query_result = connection.execute(db.text("SELECT * FROM events;")).fetchall()
+        query = "SELECT * FROM events;"
+        query_result = connection.execute(db.text(query)).fetchall()
         print(pd.DataFrame(query_result))
 
 else:
