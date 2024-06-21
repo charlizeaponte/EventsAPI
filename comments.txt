@@ -1,0 +1,32 @@
+# Refactoring and Testing Plan Comments:
+
+Refactoring Comments:
+1. Environment Variable: Use `os.environ.get('EVENTS_CLIENT_ID')} to safely retrieve sensitive API keys. Make sure the runtime environment's environment variables are set correctly.
+2. Endpoint and Parameters: Create the `endpoint} API request URL and the `params} API request parameters in accordance with industry best practices.
+3. Request Handling: Handle API requests ({requests.get()}) correctly, taking into account error management for network problems or API rate limitations.
+4. Data Processing: Effectively use Python's data structures to transform the JSON response from the API into structured data ({events_list}).
+5. Database Operations: To communicate with a SQLite database, use `sqlalchemy` ({events.db}). Verify that the `to_sql()` method and connection management are done correctly.
+
+6. Error Handling: The error handling that is currently in place (`print(f"Error: {response.status_code}")}) is simplistic. 
+Take into consideration extending to fully handle particular HTTP status codes or network errors.
+
+Testing Plan Comments:
+
+1. Unit Testing: Use unit tests to verify every component separately.
+   - Examine how well `requests.get()` handles API requests.
+   Check that the JSON data has been parsed and converted into a `events_list}.
+   - Examine database functions, such as the `to_sql()` function.
+
+ 2. Edge Cases: Discuss the following edge cases:
+   - Empty API Response: Check behavior in the event that the API returns no events.
+   - Different HTTP Status Codes: Examine how the API handles status codes that aren't 200.
+   - Null or Empty User Input: Use null or empty user input to assess how the script behaves.
+
+ 3. Database Integrity: Make sure that the data is entered into the SQLite database ({events.db}) accurately.
+
+ 4. Error Handling: Evaluate error situations by simulating things like network malfunctions or interruptions in API services.
+  Examine how the environment variable `EVENTS_CLIENT_ID} behaves when it is not defined.
+
+ 5. Integration Testing: Confirm through integration tests
+6. Automated Testing: For automated testing that is appropriate for continuous integration (CI) pipelines, use a testing framework (such as `unittest`).
+
