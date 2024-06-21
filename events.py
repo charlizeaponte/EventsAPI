@@ -41,10 +41,13 @@ if response.status_code == 200:
         events_list.append(events_info)
     df = pd.DataFrame(events_list)
 
+    # SQLite database operations
     engine = db.create_engine('sqlite:///events.db')
 
+    # Export DataFrame to SQLite
     df.to_sql('events', con=engine, if_exists='replace', index=False)
 
+    # Execute SQL query to fetch data
     with engine.connect() as connection:
         query_result = connection.execute(db.text("SELECT * FROM events;")).fetchall()
         print(pd.DataFrame(query_result))
