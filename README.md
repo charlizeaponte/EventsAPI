@@ -54,3 +54,4 @@ python3 events.py
 
 9. **Error Handling**: An error message containing the status code is printed if the API request is unsuccessful.
 
+ ![example workflow](https://github.com/charlizeaponte/EventsAPI/actions/workflows/check_style.yml/badge.svg)
